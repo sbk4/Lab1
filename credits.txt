@@ -1,0 +1,19 @@
+Rice Univesity 
+Computer Science - COMP360 
+Lab - Turtle graphics
+
+
+Libraries
+-----------------------------------
+Fast Light Tookit
+http://www.fltk.org/
+
+libbmp
+http://code.google.com/p/libbmp/
+
+
+
+Author
+-----------------------------------
+Powei Feng
+Fall 2012
