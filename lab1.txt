@@ -15,5 +15,5 @@ DrawConnection[length, vertices] = For[i, 1, vertices - 1, Block[Turn[(2 + i) * 
 #
 Rosette[length, vertices] = Block[For[i,1,vertices,Block[Forward[length], Hold[DrawConnection[length, vertices]] ,Turn[(2 * Pi / vertices)]]]]
 #
-Spiral[length,angle,scale] = 
+Spiral[length,angle,scale] = Block[Spiral[length,angle,scale]=Block[For[i,1,100,Block[Forward[length],Turn[angle],Resize[scale]]]]]
 #
