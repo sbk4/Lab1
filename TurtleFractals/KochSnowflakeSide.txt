@@ -1,0 +1,11 @@
+#
+KochSnowflakeSide[level, length] = Block[Eq[level ,0, Hold[Forward[length/4]],  Block[KochSnowflakeSide[level-1, length / 4],
+Turn[Pi / 3],
+KochSnowflakeSide[level-1, length / 4],
+Turn[-Pi * 2/3],
+KochSnowflakeSide[level-1, length / 4],
+Turn[Pi/3],
+KochSnowflakeSide[level-1, length / 4]]]]
+#
+KochSnowflakeSide[3, 2000] 
+#

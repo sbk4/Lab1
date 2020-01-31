@@ -1,0 +1,7 @@
+#
+ResetTurtle[]
+#
+Polygon[length,sides] = Block[For[i,1,sides,Block[Forward[length],Turn[(2 * Pi / sides)]]]]
+#
+Polygon[80,8]
+#

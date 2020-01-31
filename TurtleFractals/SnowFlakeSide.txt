@@ -1,0 +1,12 @@
+#
+SnowflakeSide[level,sides,length] = Block[Eq[level, 0, Hold[Forward[length / (sides + 1)]],
+Block[SnowflakeSide[level -1 , sides, length / (sides + 1)],
+Turn[Pi * (sides -2 ) / sides],
+SnowflakeSide[level -1 , sides, length / (sides + 1)],
+Hold[For[i, 1, sides -2, Block[Turn[ (-2) * Pi / sides], SnowflakeSide[level -1 , sides, length / (sides + 1)]]]],
+Turn[Pi * (sides -2 ) / sides],
+SnowflakeSide[level -1 , sides, length / (sides + 1)]]
+]]
+#
+SnowflakeSide[3,4,6000]
+#

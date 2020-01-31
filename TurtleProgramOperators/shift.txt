@@ -1,0 +1,7 @@
+#
+Star[length,vertices] = Block[For[i,1,vertices,Block[Forward[length],Turn[(4 * Pi / vertices)]]]]
+#
+Shift[distance,repeats,procedure]=Block[For[i,1,repeats,Block[procedure,Move[distance]]]]
+#
+Shift[30, 3, Star[80, 5]]
+#

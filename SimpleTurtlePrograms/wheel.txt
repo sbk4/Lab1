@@ -1,0 +1,5 @@
+#
+Wheel[length, vertices] = Block[For[i,1,vertices,Block[Forward[length], Turn[(Pi / 2) +  Pi /  vertices], Forward[length / (2 * Sin[Pi / vertices])], Turn[Pi], Forward[length / (2 * Sin[Pi / vertices])],Turn[(Pi / 2) - Pi /  vertices] ,Turn[(2 * Pi / vertices)]]]]
+#
+Wheel[100,8]
+#

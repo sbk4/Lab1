@@ -1,0 +1,9 @@
+#
+ResetTurtle[]
+#
+Polygon[length,sides] = Block[For[i,1,sides,Block[Forward[length],Turn[(2 * Pi / sides)]]]]
+#
+Circle[radius] = Block[Hold[Polygon[radius * 2 * Pi / 200, 200]]]
+#
+Circle[100]
+#

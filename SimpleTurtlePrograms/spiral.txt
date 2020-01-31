@@ -1,0 +1,5 @@
+#
+Spiral[length,angle,scale] = Block[For[i,1,100,Block[Forward[length],Turn[angle],Resize[scale]]]]
+#
+Spiral[80,Pi/6,0.8]
+#

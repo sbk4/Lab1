@@ -1,0 +1,7 @@
+#
+Star[length,vertices] = Block[For[i,1,vertices,Block[Forward[length],Turn[(4 * Pi / vertices)]]]]
+#
+Spin[angle,repeats,procedure] = Block[For[i,1,repeats,Block[procedure,Turn[angle]]]]
+#
+Spin[Pi/3, 6, Star[80,5]]
+#

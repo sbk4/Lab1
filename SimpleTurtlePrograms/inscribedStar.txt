@@ -1,0 +1,13 @@
+#
+ResetTurtle[]
+#
+Polygon[length,sides] = Block[For[i,1,sides,Block[Forward[length],Turn[(2 * Pi / sides)]]]]
+#
+Star[length,vertices] = Block[For[i,1,vertices,Block[Forward[length],Turn[(4 * Pi / vertices)]]]]
+#
+Circle[radius] = Block[Hold[Polygon[radius * 2 * Pi / 200, 200]]]
+#
+InscribedStar[radius,vertices] = Block[Hold[Circle[radius]], Hold[ResetTurtle[]],Hold[Turn[Pi/2 - (Pi * (vertices -4)) / (2 *vertices)]],Hold[Star[radius * Sin[2 * Pi / vertices] * 2 , vertices]]]
+#
+InscribedStar[100,7]
+#

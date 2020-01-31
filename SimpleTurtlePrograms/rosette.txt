@@ -1,0 +1,7 @@
+#
+DrawConnection[length, vertices] = For[i, 1, vertices - 1, Block[Turn[(2 + i) * (Pi / vertices)], Forward[length * Sin[Pi - (i + 1) * Pi / vertices] / Sin[Pi / vertices]], Turn[Pi], Forward[length * Sin[Pi - (i + 1) * Pi / vertices] / Sin[Pi / vertices]], Turn[Pi - (2 + i) * (Pi / vertices)]]]
+#
+Rosette[length, vertices] = Block[For[i,1,vertices,Block[Forward[length], Hold[DrawConnection[length, vertices]] ,Turn[(2 * Pi / vertices)]]]]
+#
+Rosette[80,8]
+#

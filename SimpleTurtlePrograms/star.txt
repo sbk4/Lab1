@@ -1,0 +1,7 @@
+#
+ResetTurtle[]
+#
+Star[length,vertices] = Block[For[i,1,vertices,Block[Forward[length],Turn[(4 * Pi / vertices)]]]]
+#
+Star[80,5]
+#

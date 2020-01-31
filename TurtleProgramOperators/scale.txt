@@ -1,0 +1,7 @@
+#
+Star[length,vertices] = Block[For[i,1,vertices,Block[Forward[length],Turn[(4 * Pi / vertices)]]]]
+#
+Scale[scale,repeats,procedure] = Block[For[i,1,repeats,Block[procedure,Resize[scale]]]]
+#
+Scale[2, 4, Star[80,5]]
+#
