@@ -17,3 +17,20 @@ Rosette[length, vertices] = Block[For[i,1,vertices,Block[Forward[length], Hold[D
 #
 Spiral[length,angle,scale] = Block[For[i,1,100,Block[Forward[length],Turn[angle],Resize[scale]]]]
 #
+Shift[distance,repeats,procedure]=Block[For[i,1,repeats,Block[procedure,Move[distance]]]]
+#
+Spin[angle,repeats,procedure] = Block[For[i,1,repeats,Block[procedure,Turn[angle]]]]
+#
+Scale[scale,repeats,procedure] = Block[For[i,1,repeats,Block[procedure,Resize[scale]]]]
+#
+KochSnowflakeRecur[level, length] = Block[Eq[level ,1, Hold[Forward[length/4]],  Block[KochSnowflakeRecur[level-1, length / 4],
+Turn[Pi / 3],
+KochSnowflakeRecur[level-1, length / 4],
+Turn[-Pi * 2/3],
+KochSnowflakeRecur[level-1, length / 4],
+Turn[Pi/3],
+KochSnowflakeRecur[level-1, length / 4]]]]
+#
+KochSnowflakeSide[level, length] = KochSnowflakeRecur[level + 1, length]
+#
+KochSnowflakeSide[2, 800]
