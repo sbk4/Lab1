@@ -1,0 +1,45 @@
+#
+ResetTurtle[]
+#
+DrawBasic[length] = Block[
+    Forward[length],
+    Turn[Pi / 2],
+    Forward[length],
+    Turn[Pi],
+    Forward[length],
+    Turn[Pi / 2],
+    Forward[length],
+    Turn[Pi / 2],
+    Forward[length * 2.0],
+    Turn[Pi / 2],
+    Forward[length],
+    Move[length],
+    Turn[Pi / 2],
+    Move[length * 2.0],
+    Turn[Pi /2]
+] 
+#
+HangmanFractal[level, length] = Block[
+    Eq[
+        level,
+        0,
+        Hold[DrawBasic[length]],
+        Block[
+            HangmanFractal[level - 1, length / 2.0],
+            Forward[length],
+            HangmanFractal[level - 1, length / 2.0],
+            Forward[length],
+            Turn[Pi / 2],
+            Forward[length],
+            HangmanFractal[level - 1, length / 2.0],
+            Turn[Pi],
+            Forward[length],
+            Turn[-Pi / 2],
+            Forward[length * 2.0],
+            Turn[Pi]
+        ]
+    ]
+]
+#
+HangmanFractal[5, 100]
+#
