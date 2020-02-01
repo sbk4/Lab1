@@ -1,0 +1,40 @@
+#
+ResetTurtle[]
+#
+Turn[Pi / 2]
+#
+Forward[80]
+#
+Tree[length, scale] = Block[
+                Turn[Pi / 6.0],
+                Forward[length * scale],
+                Turn[Pi],
+                Forward[length * scale],
+                Turn[2 * Pi / 3.0],
+                Forward[length * scale],
+                Turn[Pi],
+                Forward[length * scale],
+                Turn[-5 * Pi / 6.0]
+]
+#
+TreeFractal[level, length, scale] = Block[
+    Eq[
+        level, 
+        0, 
+        Hold[Tree[length, scale]],
+        Block[
+            Turn[Pi / 6.0],
+            Forward[length * scale],
+            TreeFractal[level - 1, length * scale, scale],
+            Turn[Pi],
+            Forward[length * scale],
+            Turn[2 * Pi / 3.0],
+            Forward[length * scale],
+            TreeFractal[level - 1, length * scale, scale],
+            Turn[Pi],
+            Forward[length * scale],
+            Turn[-5 * Pi / 6.0]
+]]] 
+#
+TreeFractal[8, 80, 0.7]
+#

@@ -1,0 +1,18 @@
+#
+ResetTurtle[] 
+#
+Polygon[length,sides] = Block[For[ii,1,sides,Block[Forward[length],Turn[(2*Pi)/sides]]]]
+#
+PolyGasket[level,sides,length,scale] = Eq[level, 0, Polygon[length,sides], 
+Block[
+For[i,1,sides,Block[
+                Resize[scale],
+                PolyGasket[level-1,sides,length,scale],
+                Resize[1.0/scale],
+                Move[length],
+                Turn[(2*Pi)/sides]]
+        ]
+    ]
+]
+#
+PolyGasket[3,5,100,0.5]
