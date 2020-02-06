@@ -1,1 +1,0 @@
-For[ii,1,3,Block[Forward[50],Turn[(Pi/6.0)*4]]]
