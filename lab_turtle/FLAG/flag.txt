@@ -1,0 +1,208 @@
+#
+ResetTurtle[]
+#
+Polygon[length,sides] = Block[For[i,1,sides,Block[Forward[length],Turn[(2 * Pi / sides)]]]]
+#
+Star[length,vertices] = Block[For[i,1,vertices,Block[Forward[length],Turn[(4 * Pi / vertices)]]]]
+#
+Circle[radius] = Block[Hold[Polygon[radius * 2 * Pi / 200, 200]]]
+#
+InscribedStar[radius,vertices] = Block[Hold[Circle[radius]], Hold[ResetTurtle[]],Hold[Turn[Pi/2 - (Pi * (vertices -4)) / (2 *vertices)]],Hold[Star[radius * Sin[2 * Pi / vertices] * 2 , vertices]]]
+#
+Wheel[length, vertices] = Block[For[i,1,vertices,Block[Forward[length], Turn[(Pi / 2) +  Pi /  vertices], Forward[length / (2 * Sin[Pi / vertices])], Turn[Pi], Forward[length / (2 * Sin[Pi / vertices])],Turn[(Pi / 2) - Pi /  vertices] ,Turn[(2 * Pi / vertices)]]]]
+#
+DrawConnection[length, vertices] = For[i, 1, vertices - 1, Block[Turn[(2 + i) * (Pi / vertices)], Forward[length * Sin[Pi - (i + 1) * Pi / vertices] / Sin[Pi / vertices]], Turn[Pi], Forward[length * Sin[Pi - (i + 1) * Pi / vertices] / Sin[Pi / vertices]], Turn[Pi - (2 + i) * (Pi / vertices)]]]
+#
+Rosette[length, vertices] = Block[For[i,1,vertices,Block[Forward[length], Hold[DrawConnection[length, vertices]] ,Turn[(2 * Pi / vertices)]]]]
+#
+Spiral[length,angle,scale] = Block[For[i,1,100,Block[Forward[length],Turn[angle],Resize[scale]]]]
+#
+Shift[distance,repeats,procedure]=Block[For[i,1,repeats,Block[procedure,Move[distance]]]]
+#
+Spin[angle,repeats,procedure] = Block[For[i,1,repeats,Block[procedure,Turn[angle]]]]
+#
+Scale[scale,repeats,procedure] = Block[For[i,1,repeats,Block[procedure,Resize[scale]]]]
+#
+Tree[length, scale] = Block[
+                Turn[Pi / 6.0],
+                Forward[length * scale],
+                Turn[Pi],
+                Forward[length * scale],
+                Turn[2 * Pi / 3.0],
+                Forward[length * scale],
+                Turn[Pi],
+                Forward[length * scale],
+                Turn[-5 * Pi / 6.0]
+]
+#
+TreeFractal[level, length, scale] = Block[
+    Eq[
+        level, 
+        0, 
+        Hold[Tree[length, scale]],
+        Block[
+            Turn[Pi / 6.0],
+            Forward[length * scale],
+            TreeFractal[level - 1, length * scale, scale],
+            Turn[Pi],
+            Forward[length * scale],
+            Turn[2 * Pi / 3.0],
+            Forward[length * scale],
+            TreeFractal[level - 1, length * scale, scale],
+            Turn[Pi],
+            Forward[length * scale],
+            Turn[-5 * Pi / 6.0]
+]]] 
+#
+KochSnowflakeRecur[level, length] = Block[Eq[level ,1, Hold[Forward[length/4]],  Block[KochSnowflakeRecur[level-1, length / 4],
+Turn[Pi / 3],
+KochSnowflakeRecur[level-1, length / 4],
+Turn[-Pi * 2/3],
+KochSnowflakeRecur[level-1, length / 4],
+Turn[Pi/3],
+KochSnowflakeRecur[level-1, length / 4]]]]
+#
+KochSnowflakeSide[level, length] = KochSnowflakeRecur[level + 1, length]
+#
+FilledStar[length]=Block[For[i,0,length,Block[Hold[Star[length-i,5]],Move[0.5]]],Turn[Pi],Move[length/2],Turn[Pi]]
+#
+FilledCircle[length]=Block[Linesize[5],For[i,0,length,Block[Hold[Circle[length-i]],Forward[0.5],Turn[Pi/2],Forward[0.5],Turn[3*Pi/2]]],Linesize[1],Move[-length*0.5],Turn[Pi/2],Move[-length*0.5],Turn[3*Pi/2]]
+#
+DiagonalShift[procedure,xdist,ydist,repeats]=Block[For[i,1,repeats,Block[procedure,Move[xdist],Turn[Pi/2],Move[ydist],Turn[3*Pi/2]]],Move[-xdist * repeats],Turn[Pi/2],Move[-ydist*repeats],Turn[3*Pi/2]]
+#
+Moon[radius,r,g,b]=Block[Hold[FilledCircle[radius]],Color[r,g,b],Move[-radius/5],Turn[Pi/2],Move[radius/10],Turn[3*Pi/2],FilledCircle[4*radius/5],Move[radius/5],Turn[Pi/2],Move[-radius/10],Turn[3*Pi/2]]
+#
+Flag[]=Block[DiagonalShift[FilledStar[15],-30,-20,5],Move[50],Turn[Pi/2],Move[-10],Turn[3*Pi/2],Moon[50,0,0,0]]
+#
+Flag[]
+#
+ResetTurtle[]
+#
+Move[175]
+#
+DrawBorder[width, length]  = Block[
+    Turn[Pi / 2],
+    Forward[width / 2.0],
+    Turn[Pi / 2],
+    Forward[length],
+    Turn[Pi / 2],
+    Forward[width],
+    Turn[Pi / 2],
+    Forward[length],
+    Turn[Pi / 2],
+    Forward[width / 2]
+]
+#
+DrawBorder[250,350]
+#
+Turn[-Pi / 2]
+#
+Move[40]
+#
+DrawBorder[330,430]
+#
+PolyGasket[level,sides,length,scale] = Eq[level, 0, Polygon[length,sides], 
+Block[
+For[i,1,sides,Block[
+                Resize[scale],
+                PolyGasket[level-1,sides,length,scale],
+                Resize[1.0/scale],
+                Move[length],
+                Turn[(2*Pi)/sides]]
+        ]
+    ]
+]
+#
+TreeLevel[] = Block[
+    Move[145],
+    Forward[15],
+    TreeFractal[7,10,0.7],
+    Forward[30],
+    TreeFractal[7,10,0.7],
+    Forward[30],
+    TreeFractal[7,10,0.7],
+    Turn[Pi],
+    Forward[90],
+    TreeFractal[7,10,0.7],
+    Forward[30],
+    TreeFractal[7,10,0.7],
+    Forward[30],
+    TreeFractal[7,10,0.7]
+]
+#
+Move[330 / 2 - 20]
+#
+Turn[Pi / 2]
+#
+Move[20]
+#
+Turn[Pi]
+#
+Spin[Pi/3, 6, Star[20,5]]
+#
+Turn[Pi]
+#
+Move[430-40]
+#
+Spin[Pi/3, 6, Star[20,5]]
+#
+Turn[Pi / 2]
+#
+TreeLevel[]
+#
+Turn[Pi]
+#
+Move[220]
+#
+Spin[Pi/3, 6, Star[20,5]]
+#
+Turn[Pi / 2]
+#
+Move[430 - 40]
+#
+Spin[Pi/3, 6, Star[20,5]]
+#
+Turn[Pi / 2]
+#
+TreeLevel[]
+#
+ResetTurtle[]
+#
+Move[175]
+#
+Turn[Pi / 2]
+#
+Move[127.5]
+#
+Turn[Pi / 2]
+#
+Updown[] = Block[
+    Forward[8.75 * 2],
+    Turn[-Pi / 2],
+    Forward[8.75 * 2],
+    Turn[-Pi / 2],
+    Forward[8.75],
+    Turn[Pi / 2],
+    Forward[8.75 * 2],
+    Turn[Pi / 2],
+    Forward[8.75 * 3],
+    Turn[Pi / 2],
+    Forward[8.75 * 2],
+    Turn[Pi / 2],
+    Forward[8.75],
+    Turn[-Pi / 2],
+    Forward[8.75 * 2],
+    Turn[-Pi / 2],
+    Forward[8.75 * 2]
+]
+#
+For[i,1,8,Updown[]]
+#
+Turn[Pi / 2]
+#
+Move[255]
+#
+Turn[Pi / 2]
+#
+For[i,1,8,Updown[]]
+#
