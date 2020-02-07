@@ -72,11 +72,29 @@ DiagonalShift[procedure,xdist,ydist,repeats]=Block[For[i,1,repeats,Block[procedu
 #
 Moon[radius,r,g,b]=Block[Hold[FilledCircle[radius]],Color[r,g,b],Move[-radius/5],Turn[Pi/2],Move[radius/10],Turn[3*Pi/2],FilledCircle[4*radius/5],Move[radius/5],Turn[Pi/2],Move[-radius/10],Turn[3*Pi/2]]
 #
-Flag[]=Block[DiagonalShift[FilledStar[15],-30,-20,5],Move[50],Turn[Pi/2],Move[-10],Turn[3*Pi/2],Moon[50,0,0,0]]
+Flag[]=Block[DiagonalShift[FilledStar[15],-30,-20,5],Move[50],Turn[Pi/2],Move[-10],Turn[3*Pi/2],Moon[50,255,0,0]]
+#
+Turn[3*Pi/2]
+#
+Move[500]
+#
+Turn[Pi/2]
+#
+Color[255,0,0]
+#
+FilledCircle[1000]
+#
+Turn[Pi/2]
+#
+Move[500]
+#
+Turn[3*Pi/2]
+#
+Color[255,255,0]
 #
 Flag[]
 #
-Color[1.0, 1.0, 1.0]
+Color[255, 255, 1.0]
 #
 Move[125]
 #
