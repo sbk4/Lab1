@@ -76,9 +76,9 @@ Flag[]=Block[DiagonalShift[FilledStar[15],-30,-20,5],Move[50],Turn[Pi/2],Move[-1
 #
 Flag[]
 #
-ResetTurtle[]
+Color[1.0, 1.0, 1.0]
 #
-Move[175]
+Move[125]
 #
 DrawBorder[width, length]  = Block[
     Turn[Pi / 2],
@@ -166,15 +166,17 @@ Turn[Pi / 2]
 #
 TreeLevel[]
 #
-ResetTurtle[]
+Move[0]
 #
-Move[175]
+Turn[Pi]
+#
+Move[202]
+#
+Move[0]
 #
 Turn[Pi / 2]
 #
-Move[127.5]
-#
-Turn[Pi / 2]
+Move[20]
 #
 Updown[] = Block[
     Forward[8.75 * 2],
