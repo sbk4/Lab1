@@ -26,12 +26,15 @@ All the files are divided into four folders, each file in the folder is a txt fi
 - Tree
 ### FLAG
 - Flag
+
+  It may take a while to generate the flag (several seconds) !
 ## Something special
 I think there is something special about our implementation on the resize function, so I listed our implementation below:
 ```C++
 void resize(double s){
 		_scale *= s;
 	}
+// we used "*=", instead of "="
 
 ```
 ## As for the star
