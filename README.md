@@ -4,7 +4,7 @@ By  Xiyuan He (xh31) and  Sue Kim (sbk4)
 All the files are divided into four folders, each file in the folder is a txt file and a corresponding image is also provided. By load each txt file, you will get the exact image
 ### Simple turtle programs
 - Polygon
-- StarP
+- Star
 - InscribedStar
 - Wheel
 - Rosette
@@ -34,3 +34,5 @@ void resize(double s){
 	}
 
 ```
+## As for the star
+For the star with even number of vertices, we decided not to modify it.
